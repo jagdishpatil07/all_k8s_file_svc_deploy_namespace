@@ -1,0 +1,20 @@
+Kind: Job
+apiVeraion: batch/v1
+metadata:
+  name: demojob
+  namespace: nginx
+spec:
+  completions: 1
+  parallelism: 1
+  template:
+    metadata:
+      name: demo-job-pod
+      labels: 
+      app: batch-task
+    spec: 
+     containers: 
+       - name: batch-conatiner
+         image: busybox:latest
+         command: ["sh", "-C", "echo tibis"]
+    restartPolicy: Never
+
